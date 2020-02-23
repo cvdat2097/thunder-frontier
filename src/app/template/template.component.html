@@ -1,31 +1,37 @@
 <div>
   <h1>Template Form</h1>
   <div>
-    {{ applicationGroup.value | json}}
+    Email: {{ email.valid.toString() | uppercase }}
+    <br>
+    Username: {{ username.valid.toString() | uppercase }}
+  </div>
+  <hr>
+  <div>
+    {{ application | json}}
   </div>
 
   <hr>
 
   <h2>Application</h2>
-  <form [formGroup]="applicationGroup" (ngSubmit)="reactiveFormSubmitHandler()">
+  <form (submit)="submitHandler()">
     <div>
       Email <br />
-      <input type="text" [formControl]="emailControl">
+      <input type="text" #email="ngModel" [(ngModel)]="application.email" name="email" required>
     </div>
     <div>
       Username: <br />
-      <input type="text" formControlName="username">
+      <input type="text" #username="ngModel" [(ngModel)]="application.username" name="username">
     </div>
 
-    <div formGroupName="education">
+    <div>
       <h3>Education</h3>
       <div>
         High School <br />
-        <input type="text" formControlName="highSchool">
+        <input type="text" [(ngModel)]="application.education.highSchool" name="highSchool">
       </div>
       <div>
         Year <br />
-        <input type="number" formControlName="year">
+        <input type="number" [(ngModel)]="application.education.year" name="year">
       </div>
     </div>
 
