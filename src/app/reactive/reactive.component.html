@@ -1,0 +1,39 @@
+<div>
+  <h1>Reactive Form</h1>
+  <div>
+    {{ applicationGroup.value | json}}
+  </div>
+
+  <hr>
+
+  <h2>Application</h2>
+  <form [formGroup]="applicationGroup" (ngSubmit)="reactiveFormSubmitHandler()">
+    <div>
+      Email <br />
+      <input type="text" [formControl]="emailControl">
+    </div>
+    <div>
+      Username: <br />
+      <input type="text" formControlName="username">
+    </div>
+
+    <div formGroupName="education">
+      <h3>Education</h3>
+      <div>
+        High School <br />
+        <input type="text" formControlName="highSchool">
+      </div>
+      <div>
+        Year <br />
+        <input type="number" formControlName="year">
+      </div>
+    </div>
+
+    <br>
+    <div>
+      <input type="submit" value="Confirm" />
+    </div>
+  </form>
+</div>
+
+<hr />
